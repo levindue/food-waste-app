@@ -1,7 +1,8 @@
-import { MapContainer, TileLayer, Marker, Popup } from 'react-leaflet';
+import { MapContainer, TileLayer, Marker } from 'react-leaflet';
 import './Map.css';
 import 'leaflet/dist/leaflet.css'
 import { Icon } from 'leaflet';
+import PopupContent from './PopupContent';
 
 const myIcon = new Icon({
   iconUrl: "https://unpkg.com/leaflet@1.9.3/dist/images/marker-icon.png",
@@ -19,15 +20,7 @@ function Map() {
           url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
         />
         <Marker position={position} icon={myIcon}>
-          <Popup>
-            <a href='/'>Levin Düsterhus</a>
-            <p>Essen: <br /></p>
-            <ul>
-              <li>Brot</li>
-              <li>3 Äpfel</li>
-              <li>2 Bananen</li>
-            </ul>
-          </Popup>
+          <PopupContent name={"Levin Düsterhus"} food={["Brot", "3 Äpfel", "5 Bananen"]} />
         </Marker>
       </MapContainer>
     </div>
