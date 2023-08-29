@@ -1,11 +1,12 @@
 import Header from "./components/Header"
-import logo from './logo.svg';
+import Map from "./components/Map"
 import './App.css';
 
 function App() {
   return (
     <div className="App">
-      <Header />   
+      <Header />
+      <Map />
     </div>
   );
 }
