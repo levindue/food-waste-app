@@ -1,5 +1,5 @@
-import Header from "./components/Header"
-import Map from "./components/Map"
+import Header from "../components/Header"
+import Map from "../components/Map"
 
 function Home() {
   return (
