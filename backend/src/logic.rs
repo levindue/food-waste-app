@@ -29,6 +29,10 @@ impl PeopleList {
         self.people.push(person);
     }
 
+    pub fn remove_person(&mut self, person: Person) {
+        self.people.remove(person.id as usize);
+    }
+
     pub fn save_to_file(&self, filename: &str) -> Result<(), Box<dyn std::error::Error>> {
         let file = OpenOptions::new()
             .write(true)
