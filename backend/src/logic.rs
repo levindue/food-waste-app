@@ -1,7 +1,6 @@
-use serde::{Serialize, Deserialize};
+use serde::{Deserialize, Serialize};
 use std::fs::{File, OpenOptions};
 use std::io::Read;
-
 
 #[derive(Debug, Serialize, Deserialize)]
 pub struct Person {
@@ -28,6 +27,10 @@ impl PeopleList {
 
     pub fn add_person(&mut self, person: Person) {
         self.people.push(person);
+    }
+
+    pub fn remove_person(&mut self, person: Person) {
+        self.people.remove(person.id as usize);
     }
 
     pub fn save_to_file(&self, filename: &str) -> Result<(), Box<dyn std::error::Error>> {
