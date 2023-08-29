@@ -12,9 +12,6 @@ function Map() {
           url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
         />
         <Marker position={position}>
-          <Popup>
-            Test popup
-          </Popup>
         </Marker>
       </MapContainer>
     </div>
