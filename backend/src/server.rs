@@ -1,6 +1,6 @@
 use crate::logic::{Food, Manager, Person};
 use std::io;
-use tiny_http::{Method, Request, Response, Server, StatusCode};
+use tiny_http::{Header, Method, Request, Response, Server, StatusCode};
 
 fn serve_404(request: Request) -> io::Result<()> {
     request.respond(Response::from_string("404").with_status_code(StatusCode(404)))
@@ -8,8 +8,11 @@ fn serve_404(request: Request) -> io::Result<()> {
 
 fn serve_list_people(request: Request, manager: &Manager) -> io::Result<()> {
     let people = manager.list_people();
-    let response = serde_json::to_string(&people)?;
-    request.respond(Response::from_string(response).with_status_code(StatusCode(200)))
+    let mut response = Response::from_string(serde_json::to_string(&people)?);
+    response.add_header(
+        Header::from_bytes(&b"Access-Control-Allow-Origin"[..], &b"http://localhost:3000"[..]).unwrap(),
+    );
+    request.respond(response.with_status_code(StatusCode(200)))
 }
 
 fn serve_add_person(mut request: Request, manager: &mut Manager) -> io::Result<()> {

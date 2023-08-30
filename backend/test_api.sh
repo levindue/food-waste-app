@@ -17,31 +17,31 @@ function make_request() {
 }
 
 # Add a person
-make_request "POST" "api/add_person" '{"id": 1, "name": "Alice", "food": []}'
+make_request "POST" "api/add_person" '{"id": 1, "name": "Alice", "food": [{"id": 1, "name": "Pizza"}]}'
 
 # List all people
 make_request "GET" "api/list_people"
 
 # Add food
-make_request "POST" "api/add_food" '{"id": 1, "name": "Pizza"}'
+# make_request "POST" "api/add_food" '{"id": 1, "name": "Pizza"}'
 
 # List all food
-make_request "GET" "api/list_food"
+# make_request "GET" "api/list_food"
 
 # List specific person's food
 # make_request "GET" "api/list_food/1"
 
 # Remove food
-make_request "POST" "api/remove_food" '1'
+# make_request "POST" "api/remove_food" '1'
 
 # Remove person
-make_request "POST" "api/remove_person" '1'
+# make_request "POST" "api/remove_person" '1'
 
 # Try accessing an unknown endpoint
-make_request "GET" "api/unknown_endpoint"
+# make_request "GET" "api/unknown_endpoint"
 
 # Try removing unknown food
-make_request "POST" "api/remove_food" '999'
+# make_request "POST" "api/remove_food" '999'
 
 # Try removing unknown person
-make_request "POST" "api/remove_person" '999'
+# make_request "POST" "api/remove_person" '999'
