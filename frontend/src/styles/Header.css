@@ -13,10 +13,32 @@
   margin-left: auto;
 }
 
-#login {
-  margin-right: 10px;
+form {
+  margin-left: auto;
 }
 
-#register {
-  margin-right: 10px;
+
+input[type=text],
+input[type=password] {
+  display: flex;
+  align-items: baseline;
+  width: 20%;
+  padding: auto;
+  margin: auto;
+  margin-right: 2%;
+  display: inline-block;
+}
+
+button {
+  background-color: #04AA6D;
+  color: white;
+  padding: 14px 20px;
+  margin: auto;
+  border: none;
+  cursor: pointer;
+  width: 100%;
+}
+
+button:hover {
+  opacity: 0.8;
 }
