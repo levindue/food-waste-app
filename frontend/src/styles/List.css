@@ -1,0 +1,48 @@
+.foodData {
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 20px;
+  background-color: #f5f5f5;
+  border-radius: 5px;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+}
+
+h1 {
+  font-size: 24px;
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+li {
+  background-color: white;
+  padding: 10px;
+  margin-bottom: 10px;
+  border-radius: 5px;
+  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+strong {
+  font-weight: bold;
+}
+
+ul.food-list {
+  padding-left: 20px;
+}
+
+ul.food-list li {
+  margin: 5px 0;
+}
+
+/* Optional: Add hover effect for better user interaction */
+
+li:hover {
+  background-color: #f5f5f5;
+  transform: translateY(-2px);
+  transition: background-color 0.3s, transform 0.3s;
+}
+
