@@ -14,34 +14,64 @@ function make_request() {
 
     echo "Response:"
     echo "$response"
+    echo
 }
 
-# Add a person
-make_request "POST" "api/add_person" '{"id": 1, "name": "Alice", "food": [{"id": 1, "name": "Pizza"}]}'
+# Add people
+person_data='{"id": 1, "name": "Alice", "food": [{"id": 1, "name": "Pizza"}]}'
+make_request "POST" "api/add_person" "$person_data"
+
+person_data='{"id": 2, "name": "Bob", "food": [{"id": 2, "name": "Burger"}]}'
+make_request "POST" "api/add_person" "$person_data"
+
+person_data='{"id": 3, "name": "Charlie", "food": [{"id": 3, "name": "Pasta"}, {"id": 4, "name": "Salad"}]}'
+make_request "POST" "api/add_person" "$person_data"
+
+person_data='{"id": 4, "name": "David", "food": []}'
+make_request "POST" "api/add_person" "$person_data"
 
 # List all people
 make_request "GET" "api/list_people"
 
-# Add food
-# make_request "POST" "api/add_food" '{"id": 1, "name": "Pizza"}'
-
 # List all food
-# make_request "GET" "api/list_food"
+make_request "GET" "api/list_all_food"
 
 # List specific person's food
-# make_request "GET" "api/list_food/1"
+make_request "GET" "api/list_food/1"
+make_request "GET" "api/list_food/2"
+make_request "GET" "api/list_food/3"
+make_request "GET" "api/list_food/4"
 
-# Remove food
-# make_request "POST" "api/remove_food" '1'
+# Add food to a person
+food_data='{"id": 4, "name": "Sushi"}'
+make_request "POST" "api/add_food/1" "$food_data"
 
-# Remove person
-# make_request "POST" "api/remove_person" '1'
+food_data='{"id": 5, "name": "Ice Cream"}'
+make_request "POST" "api/add_food/1" "$food_data"
 
-# Try accessing an unknown endpoint
-# make_request "GET" "api/unknown_endpoint"
+# List specific person's food after additions
+make_request "GET" "api/list_food/1"
+make_request "GET" "api/list_food/2"
 
-# Try removing unknown food
-# make_request "POST" "api/remove_food" '999'
+# Remove food from a person
+# food_data='{"food_id": 1, "person_id": 1}'
 
-# Try removing unknown person
-# make_request "POST" "api/remove_person" '999'
+food_data='{
+    "food_id": 1,
+    "person_id": 2
+}'
+
+make_request "POST" "api/remove_food" "$food_data"
+
+# List specific person's food after removal
+make_request "GET" "api/list_food/1"
+
+# List specific person's food after removal
+make_request "GET" "api/list_food/1"
+
+# Remove a person
+person_id_data='2'
+make_request "POST" "api/remove_person" "$person_id_data"
+
+# List all people after removal
+make_request "GET" "api/list_people"
