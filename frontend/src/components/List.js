@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from 'react';
-import Header from '../components/Header';
 import '../styles/List.css'
 
 async function get_data() {
@@ -12,7 +11,7 @@ async function get_data() {
   }
 }
 
-function Test() {
+function List() {
   const [data, setData] = useState([]);
 
   useEffect(() => {
@@ -27,8 +26,7 @@ function Test() {
   const filteredData = data.filter(person => person.food.length > 0);
 
   return (
-    <div className="container">
-    <Header />
+    <div className="List-container">
       <h1>Liste</h1>
       <ul>
         {filteredData.map(person => (
@@ -47,4 +45,4 @@ function Test() {
 }
 
 
-export default Test;
+export default List;

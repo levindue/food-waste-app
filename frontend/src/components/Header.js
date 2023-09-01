@@ -1,24 +1,63 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import '../styles/Header.css';
+import logo from '../images/logo.png'
 
 function Header() {
+
+  const [loggedIn, setLoggedIn] = useState(false);
+  const [username, setUsername] = useState('');
+
+  useEffect(() => {
+    const storedUsername = localStorage.getItem('username');
+    if (storedUsername) {
+      setLoggedIn(true);
+      setUsername(storedUsername);
+    }
+  }, []);
+
+  const handleLogin = (e) => {
+    e.preventDefault();
+
+    const enteredUsername = e.target.username.value;
+
+    setLoggedIn(true);
+    setUsername(enteredUsername);
+
+    localStorage.setItem('username', enteredUsername);
+  };
+
+  const handleLogout = () => {
+    setLoggedIn(false);
+    setUsername('');
+
+    localStorage.removeItem('username');
+  };
+
   const location = useLocation();
-  const targetPath = location.pathname === '/' ? '/list' : '/';
+  const target = location.pathname === '/' ? '/dashboard' : '/';
 
   return (
     <div className="App-header">
-      <form>
-        <label htmlFor="fname">username: </label>
-        <input type="text" />
-        <label htmlFor="lname">password: </label>
-        <input type="password" />
-        <input type="submit" value="Login" />
-      </form>
-
-      <Link to={targetPath}>
-        <button>{location.pathname === '/' ? 'Go to List Page' : 'Go to Home Page'}</button>
-      </Link>
+      <div className="logo-container">
+        <img src={logo} alt="Logo" className="logo" />
+      </div>
+      {loggedIn ? (
+        <div className='App-welcome'>
+          <div className="dashboard-logout">
+            <Link to={target}>
+              <button>{location.pathname === '/' ? 'Dashboard' : 'Home'}</button>
+            </Link>
+            <button onClick={handleLogout}>Logout</button>
+          </div>
+        </div>
+      ) : (
+        <form onSubmit={handleLogin}>
+          <label htmlFor="username">Username: </label>
+          <input autoComplete='off' type="text" name="username" />
+          <input type="submit" value="Login" />
+        </form>
+      )}
     </div>
   );
 }

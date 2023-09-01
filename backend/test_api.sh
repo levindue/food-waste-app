@@ -24,7 +24,7 @@ make_request "POST" "api/add_person" "$person_data"
 person_data='{"id": 2, "name": "Bob", "food": [{"id": 2, "name": "Burger"}]}'
 make_request "POST" "api/add_person" "$person_data"
 
-person_data='{"id": 3, "name": "Charlie", "food": [{"id": 3, "name": "Pasta"}, {"id": 4, "name": "Salad"}]}'
+person_data='{"id": 3, "name": "Charlie", "food": [{"id": 3, "name": "Pasta"}, {"id": 4, "name": "Salat"}]}'
 make_request "POST" "api/add_person" "$person_data"
 
 person_data='{"id": 4, "name": "David", "food": []}'

@@ -1,4 +1,9 @@
 .leaflet-container {
-  width: 100%;
+  width: 82%;
   height: 90vh;
+}
+
+.Map {
+  display: flex;
+  background-color: #282c34;
 }
