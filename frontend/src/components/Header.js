@@ -44,6 +44,7 @@ function Header() {
       </div>
       {loggedIn ? (
         <div className='App-welcome'>
+    <h1 className='Welcome-text'>Welcome {username}!</h1>
           <div className="dashboard-logout">
             <Link to={target}>
               <button>{location.pathname === '/' ? 'Dashboard' : 'Home'}</button>
